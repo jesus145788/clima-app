@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.claro {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    color: #333333;
+}
+
+body.claro .resultado, 
+body.claro .pronostico-tarjeta,
+body.clima-soleado, body.clima-nublado, body.clima-lluvioso, body.clima-nieve {
+    color: #ffffff;
+}
+
+body.clima-soleado {
+    background: linear-gradient(135deg, #f12711, #f5af19);
+}
+
+body.clima-nublado {
+    background: linear-gradient(135deg, #606c88, #3f4c6b);
+}
+
+body.clima-lluvioso {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+body.clima-nieve {
+    background: linear-gradient(135deg, #e6dada, #274046);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.banner {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.banner:hover {
+    transform: scale(1.02);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+header p {
+    color: #e0e0e0;
+    margin-top: 5px;
+}
+
+body.claro header p {
+    color: #555555;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.buscador {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#inputCiudad {
+    padding: 15px 25px;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 1rem;
+    width: 280px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#inputCiudad::placeholder {
+    color: #cccccc;
+}
+
+button {
+    background: #ffffff;
+    color: #1e3c72;
+    border: none;
+    padding: 15px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #f0f0f0;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+.btn-secundario {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.btn-whatsapp {
+    background: #25d366;
+    color: #ffffff;
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.btn-whatsapp:hover {
+    background: #1ebd56;
+    transform: scale(1.05);
+}
+
+.historial-contenedor {
+    margin-bottom: 25px;
+}
+
+.historial-botones {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.btn-historial {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.resultado {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.5s ease;
+    display: none;
+}
+
+.resultado.visible {
+    display: block;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.resultado .ciudad {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.resultado .pais {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.resultado .icono-clima {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.resultado .temperatura {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.resultado .descripcion {
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+
+.resultado .detalles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.resultado .detalle {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 12px;
+}
+
+.resultado .detalle .etiqueta {
+    font-size: 0.8rem;
+    color: #cccccc;
+    text-transform: uppercase;
+}
+
+.resultado .detalle .valor {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+#estado {
+    margin-top: 15px;
+    color: #e0e0e0;
+    font-style: italic;
+}
+
+.pronostico-contenedor {
+    margin-top: 35px;
+    display: none;
+}
+
+.pronostico-contenedor.visible {
+    display: block;
+}
+
+.pronostico-contenedor h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.pronostico-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.pronostico-tarjeta {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 15px 10px;
+    backdrop-filter: blur(5px);
+}
+
+.pronostico-tarjeta .fecha {
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.pronostico-tarjeta img {
+    width: 50px;
+    height: 50px;
+}
+
+.pronostico-tarjeta .temp {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #cccccc;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+    #inputCiudad {
+        width: 100%;
+    }
+    .resultado .temperatura {
+        font-size: 2.5rem;
+    }
+}
